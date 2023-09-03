@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("orders")
 public class OrderController {
 
     @Autowired
     OrderService orderService;
 
-    public OrderController(OrderService orderService){
-        this.orderService = orderService;
-    }
+//    //public OrderController(OrderService orderService){
+//        this.orderService = orderService;
+//    }
 
     @PostMapping("/add-order")
     public ResponseEntity<String> addOrder(@RequestBody Order order){
