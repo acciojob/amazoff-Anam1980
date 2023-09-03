@@ -23,9 +23,9 @@ public class OrderRepository {
     Map<String, List<String>>PartnerOrderList = new HashMap<>();
 
     public void addOrder(Order order) {
-        if(!orders.containsKey(order.getId())) {
+
             orders.put(order.getId(), order);
-        }
+
     }
 
     public void addPartner(String partnerId) {
@@ -86,19 +86,12 @@ public class OrderRepository {
         return orderlist;
     }
 
-    public Integer getCountOfUnassignedOrders() {
-        int count=0;
-        for(Map.Entry<String, String> entry : OrderPartnerPair.entrySet()){
-            if(entry.getValue()==null){
-                count++;
-            }
-        }
+    public int getCountOfUnassignedOrders() {
 
-        return count;
-        //return orders.size()-OrderPartnerPair.size();
+        return orders.size()-OrderPartnerPair.size();
     }
 
-    public Integer getOrdersLeftAfterGivenTimeByPartnerId(int time, String partnerId) {
+    public int getOrdersLeftAfterGivenTimeByPartnerId(int time, String partnerId) {
 
         int count=0;
         List<String>list = PartnerOrderList.get(partnerId);
